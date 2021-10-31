@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPeassy.master.cs" Inherits="TPC_BarrientoL_PerezP.MasterPeassy" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+
+           <h1><%:Page.Title %></h1>
+
+        </header>
+        <nav >
+            <ul style="list-style: none; text-decoration: none">
+                <li>
+                    <a href="inicio.aspx">inicio</a>
+                </li>
+                 <li>
+                    <a href="Cuenta.aspx">Cuenta</a>
+                </li>
+                 <li>
+                    <a href="Contacto.aspx" >Contacto</a>
+                </li>
+                
+
+               
+            </ul>
+        </nav>
+
+
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <h2>FOOOTER</h2>
+
+        </footer>
+    </form>
+</body>
+</html>
