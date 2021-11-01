@@ -27,13 +27,13 @@ go
 create table Articulo(
 id bigint not null primary key identity(1,1),
 nombre varchar(50) not null,
-idMarca bigint foreign key references Marcas(id) not null,
-idCategoria bigint foreign key references Categorias(id),
-descripcion varchar(50) not null,
+idMarca	bigint foreign key references Marcas(id) not null,
+idCategoria bigint foreign key references Categorias(id) not null,
+descripcion varchar(200) not null,
 precio money not null,
 peso_kg decimal null,
 largo_cm decimal null,
-imagenURL varchar(50) not null,
+imagenURL varchar(200) not null,
 stock bigint not null,
 Estado bit null,
 )
@@ -49,3 +49,4 @@ id bigint not null foreign key references Carrito(id),
 idarticulo bigint not null references Articulo(id),
 cantidad bigint not null,
 )
+

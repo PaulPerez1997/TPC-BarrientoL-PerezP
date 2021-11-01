@@ -1,10 +1,10 @@
 use Herramientas
 go
 set identity_insert [dbo].[Articulo] ON
-insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado])
-values('1','Martillo mecanico ','7','1','Martillo de acero con cabeza de acero y mango de fibra de vidrio','750,00','0,3','30','https://http2.mlstatic.com/D_NQ_NP_658751-MLA45542364341_042021-O.webp','100','1')
+insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado]) 
+values('1','Martillo mecanico','7','1','Martillo de acero con cabeza de acero y mango de fibra de vidrio','750,00','0,3','30','https://http2.mlstatic.com/D_NQ_NP_658751-MLA45542364341_042021-O.webp','100','1')
 go
-insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado])
+insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado]) 
 values('2','Serrucho','1','1','Serrucho costilla mango anatómico profesional dientes doble filo, 10 dientes por pulgada','1110,00','0,35','30','https://http2.mlstatic.com/D_NQ_NP_669985-MLA45874217541_052021-O.webp','50','1')
 go
 insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado])
@@ -18,6 +18,7 @@ values('5','Amoladora angular Bosch','4','1','Amoladora angular Bosch profession
 go
 insert [dbo].[Articulo] ([id],[nombre],[idMarca],[idCategoria],[descripcion],[precio],[peso_kg],[largo_cm],[imagenURL],[stock],[Estado])
 values('6','Motosierra a nafta','8','1','Motosierra a nafta Daewoo,Cilindrada: 45cc, Largo de barra: 16", Capacidad del tanque de 550ml, Incluye accesorios.','15499,00','5,9',null,'https://http2.mlstatic.com/D_NQ_NP_887080-MLA43138730558_082020-O.webp','7','1')
+go
 set identity_insert [dbo].[Articulo] OFF
 set identity_insert [dbo].[Marcas] ON
 go
@@ -36,4 +37,5 @@ go
 insert [dbo].[Marcas] ([id],[nombre]) values ('7','Tolsen')
 go
 insert [dbo].[Marcas] ([id],[nombre]) values ('8','Daewoo')
+go
 set identity_insert [dbo].[Marcas] OFF

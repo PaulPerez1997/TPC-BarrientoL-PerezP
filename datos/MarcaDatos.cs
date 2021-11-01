@@ -3,10 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using dominio;
 
 namespace datos
 {
-    class MarcaDatos
+    public class MarcaDatos
     {
+        public List<Marca> listar()
+        {
+            List<Marca> lista = new List<Marca>();
+            AccesoDatos datos = new AccesoDatos();
+            datos.SetearConsulta("select id, Descripcion from Marcas");
+            datos.EjecutarLectura();
+
+            try
+            {
+                while (datos.Lector.Read())
+                {
+                    Marca aux = new Marca();
+                    aux.id = datos.Lector.GetInt32(0);
+                    aux.descripcion = datos.Lector.GetString(1);
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

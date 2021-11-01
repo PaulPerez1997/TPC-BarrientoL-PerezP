@@ -7,7 +7,7 @@ using dominio;
 
 namespace datos
 {
-    public class PersonaDatos
+    class ArticuloDatos
     {
         public List<Articulo> Listar()
         {
@@ -21,8 +21,7 @@ namespace datos
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.
-                    aux.ID = (int)datos.Lector["id"];
+                    aux.id= (int)datos.Lector["id"];
 
                     if (!(datos.Lector["Codigo"] is DBNull))
                         aux.Codigo = (string)datos.Lector["Codigo"];
@@ -63,13 +62,13 @@ namespace datos
                 datos.cerrarConexion();
             }
 
-           
+
 
 
 
         }
 
-       
+
 
         public void Agregar(Articulo nuevo)
         {
@@ -104,14 +103,14 @@ namespace datos
             try
             {
                 datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");
-                datos.setearParametro("@Codigo",Art.Codigo);
-                datos.setearParametro("@Nombre",Art.Nombre);
-                datos.setearParametro("@Desc",Art.Descripcion);
-                datos.setearParametro("@idMarca",Art.Marca.id);
-                datos.setearParametro("@idCategoria",Art.Categoria.ID);
-                datos.setearParametro("@img",Art.ImagenURL);
-                datos.setearParametro("@Precio",Art.Precio);
-                datos.setearParametro("@id",Art.ID);
+                datos.setearParametro("@Codigo", Art.Codigo);
+                datos.setearParametro("@Nombre", Art.Nombre);
+                datos.setearParametro("@Desc", Art.Descripcion);
+                datos.setearParametro("@idMarca", Art.Marca.id);
+                datos.setearParametro("@idCategoria", Art.Categoria.ID);
+                datos.setearParametro("@img", Art.ImagenURL);
+                datos.setearParametro("@Precio", Art.Precio);
+                datos.setearParametro("@id", Art.ID);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
