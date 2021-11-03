@@ -8,15 +8,18 @@ namespace dominio
 {
     public class Articulo
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public int idCategoria { get; set; }
-        public int idMarca { get; set; }
-        public string descripcion { get; set; }
-        public decimal precio { get; set; }
-        public decimal peso_kg { get; set; }
-        public decimal largo_cm { get; set; }
-        public string imagenURL { get; set; }
-        public int stock { get; set; }
+        public int ID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public decimal Peso_kg { get; set; }
+        public decimal Largo_cm { get; set; }
+        public string ImagenURL { get; set; }
+        public int Stock { get; set; }
+
+        public Categoria Categoria { get; set; }
+
+        public Marca Marca { get; set; }
+       
     }
 }

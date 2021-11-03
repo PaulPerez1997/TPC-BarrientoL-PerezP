@@ -14,7 +14,7 @@ namespace datos
             {
                 List<Categoria> lista = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
-            datos.SetearConsulta("select id, descripcion from Categorias");
+            datos.SetearConsulta("select id, nombre from Categorias");
             datos.EjecutarLectura();
            
                try 
@@ -23,7 +23,7 @@ namespace datos
                 {
                     Categoria aux = new Categoria();
                     aux.ID = (int)datos.Lector["id"];
-                    aux.CategoriaDescripcion = (string)datos.Lector["descripcion"];
+                    aux.Descripcion = (string)datos.Lector["nombre"];
                     lista.Add(aux);
                 }
                 

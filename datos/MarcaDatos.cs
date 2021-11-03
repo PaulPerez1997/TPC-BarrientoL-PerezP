@@ -14,7 +14,7 @@ namespace datos
         {
             List<Marca> lista = new List<Marca>();
             AccesoDatos datos = new AccesoDatos();
-            datos.SetearConsulta("select id, Descripcion from Marcas");
+            datos.SetearConsulta("select id, nombre from Marcas");
             datos.EjecutarLectura();
 
             try
@@ -22,8 +22,8 @@ namespace datos
                 while (datos.Lector.Read())
                 {
                     Marca aux = new Marca();
-                    aux.id = datos.Lector.GetInt32(0);
-                    aux.descripcion = datos.Lector.GetString(1);
+                    aux.ID = datos.Lector.GetInt32(0);
+                    aux.Descripcion = datos.Lector.GetString(1);
                     lista.Add(aux);
                 }
 
@@ -36,6 +36,8 @@ namespace datos
             }
             finally
             {
+                
+
                 datos.cerrarConexion();
             }
         }

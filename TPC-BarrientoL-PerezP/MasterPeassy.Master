@@ -39,8 +39,8 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer>
-            <h2>FOOOTER</h2>
+        <footer style="text-align: center">
+            <p> &copy <%: DateTime.Now.Year%> - Peassy </p>
 
         </footer>
     </form>

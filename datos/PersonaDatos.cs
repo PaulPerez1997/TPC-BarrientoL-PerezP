@@ -21,11 +21,8 @@ namespace datos
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.
+                    
                     aux.ID = (int)datos.Lector["id"];
-
-                    if (!(datos.Lector["Codigo"] is DBNull))
-                        aux.Codigo = (string)datos.Lector["Codigo"];
 
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
@@ -41,10 +38,11 @@ namespace datos
 
                     aux.Categoria = new Categoria();
                     aux.Categoria.ID = datos.Lector.GetInt32(7);
-                    aux.Categoria.CategoriaDescripcion = datos.Lector.GetString(8);
-                    aux.Marca = new MARCA();
-                    aux.Marca.id = datos.Lector.GetInt32(3);
-                    aux.Marca.marca = datos.Lector.GetString(4);
+                    aux.Categoria.Descripcion = datos.Lector.GetString(8);
+                    
+                    aux.Marca = new Marca();
+                    aux.Marca.ID = datos.Lector.GetInt32(3);
+                    aux.Marca.Descripcion = datos.Lector.GetString(4);
 
                     lista.Add(aux);
                 }
@@ -77,12 +75,11 @@ namespace datos
             try
             {
                 datos.SetearConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion,ImagenUrl,Precio,IdMarca,IdCategoria) values (@Codigo,@Nombre,@Descripcion,@ImagenURL,@Precio,@IdMarca,@IdCategoria)");
-                datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
                 datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
                 datos.setearParametro("@Precio", nuevo.Precio);
-                datos.setearParametro("@IdMarca", nuevo.Marca.id);
+                datos.setearParametro("@IdMarca", nuevo.Marca.ID);
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.ID);
                 datos.EjecutarAccion();
             }
@@ -103,11 +100,10 @@ namespace datos
 
             try
             {
-                datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");
-                datos.setearParametro("@Codigo",Art.Codigo);
+                datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");     
                 datos.setearParametro("@Nombre",Art.Nombre);
                 datos.setearParametro("@Desc",Art.Descripcion);
-                datos.setearParametro("@idMarca",Art.Marca.id);
+                datos.setearParametro("@idMarca",Art.Marca.ID);
                 datos.setearParametro("@idCategoria",Art.Categoria.ID);
                 datos.setearParametro("@img",Art.ImagenURL);
                 datos.setearParametro("@Precio",Art.Precio);

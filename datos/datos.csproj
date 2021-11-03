@@ -42,11 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="ArticuloDatos.cs" />
     <Compile Include="CategoriaDatos.cs" />
     <Compile Include="MarcaDatos.cs" />
     <Compile Include="PersonaDatos.cs" />
-    <Compile Include="ProductoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{e9308963-31a1-458f-b982-1519724f9dac}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

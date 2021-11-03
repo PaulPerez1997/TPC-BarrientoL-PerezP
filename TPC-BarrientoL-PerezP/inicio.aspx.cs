@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using datos;
 
 namespace TPC_BarrientoL_PerezP
 {
@@ -11,6 +13,10 @@ namespace TPC_BarrientoL_PerezP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Articulo> ArticuloLista;
+            ArticuloDatos lista = new ArticuloDatos();
+            ArticuloLista = lista.Listar();
+            GVArticulo.DataSource = ArticuloLista;
 
         }
     }
