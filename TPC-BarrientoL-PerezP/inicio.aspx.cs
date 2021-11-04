@@ -13,11 +13,10 @@ namespace TPC_BarrientoL_PerezP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Articulo> ArticuloLista;
-            ArticuloDatos lista = new ArticuloDatos();
-            ArticuloLista = lista.Listar();
-            GVArticulo.DataSource = ArticuloLista;
 
+            ArticuloDatos lista = new ArticuloDatos();
+            GVArticulos.DataSource = lista.Listar();
+            GVArticulos.DataBind();        
         }
     }
 }

@@ -15,7 +15,8 @@ namespace dominio
         public decimal Peso_kg { get; set; }
         public decimal Largo_cm { get; set; }
         public string ImagenURL { get; set; }
-        public int Stock { get; set; }
+        public Int64 Stock { get; set; }
+
 
         public Categoria Categoria { get; set; }
 

@@ -19,7 +19,7 @@ namespace datos
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS;database=Herramientas;integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Herramientas; integrated security=true");
             comando = new SqlCommand();
         }
 

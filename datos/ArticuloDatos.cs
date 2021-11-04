@@ -14,6 +14,8 @@ namespace datos
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+
+
             try
             {
                 datos.SetearConsulta("select A.id,M.id, M.nombre, C.id, C.nombre, A.descripcion, A.precio, A.peso_kg, A.largo_cm, A.imagenURL, A.stock, A.Estado from Articulo A, Marcas M, Categorias C where A.idMarca = M.id and A.idCategoria = C.id");
@@ -22,47 +24,48 @@ namespace datos
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.ID = (int)datos.Lector["id"];
+                  
+                if (!(datos.Lector["id"] is DBNull))
+                 aux.ID = (int)datos.Lector["id"];
+                  
+                if (!(datos.Lector["nombre"] is DBNull))
+                    aux.Nombre = (string)datos.Lector["nombre"];
 
-                    if (!(datos.Lector["nombre"] is DBNull))
-                        aux.Nombre = (string)datos.Lector["nombre"];
+                if (!(datos.Lector["descripcion"] is DBNull))
+                    aux.Descripcion = (string)datos.Lector["descripcion"];
 
-                    if (!(datos.Lector["descripcion"] is DBNull))
-                        aux.Descripcion = (string)datos.Lector["descripcion"];
+                if (!(datos.Lector["imagenURL"] is DBNull))
+                    aux.ImagenURL = (string)datos.Lector["imagenURL"];
 
-                    if (!(datos.Lector["imagenURL"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["imagenURL"];
+                if (!(datos.Lector["precio"] is DBNull))
+                    aux.Precio = (decimal)datos.Lector["precio"];
 
-                    if (!(datos.Lector["precio"] is DBNull))
-                        aux.Precio = (decimal)datos.Lector["precio"];
+                if (!(datos.Lector["peso_kg"] is DBNull))
+                    aux.Peso_kg = (decimal)datos.Lector["peso_kg"];
 
-                    if (!(datos.Lector["peso_kg"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["peso_kg"];
-
-                    if (!(datos.Lector["largo_cm"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["largo_cm"];
+                if (!(datos.Lector["largo_cm"] is DBNull))
+                    aux.Largo_cm = (decimal)datos.Lector["largo_cm"];
 
                     if (!(datos.Lector["stock"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["stock"];
-
-                    if (!(datos.Lector["Estado"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["Estado"];
-
-                    aux.Marca = new Marca();
-                    aux.Marca.ID = datos.Lector.GetInt32(1);
-                    aux.Marca.Descripcion = datos.Lector.GetString(2);
-
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.ID = datos.Lector.GetInt32(3);
-                    aux.Categoria.Descripcion = datos.Lector.GetString(4);
+                        aux.Stock = datos.Lector.GetInt64(10);
 
 
-                    lista.Add(aux);
-                }
+                aux.Marca = new Marca();
+                aux.Marca.ID = datos.Lector.GetInt32(1);
+                aux.Marca.Descripcion = datos.Lector.GetString(2);
+
+                aux.Categoria = new Categoria();
+                aux.Categoria.ID = datos.Lector.GetInt32(3);
+                aux.Categoria.Descripcion = datos.Lector.GetString(4);
+
+                lista.Add(aux);
+            }
+            
 
 
                 return lista;
             }
+
             catch (Exception ex)
             {
 
