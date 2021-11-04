@@ -1,5 +1,86 @@
 ﻿body {
+    text-align: center;
+    margin: 0%;
+    padding: 0%;
+    background-color: whitesmoke;
+    /*FUENTE*/
+    font-family: 'Calibri','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /*Para mozzilla*/
+    -moz-font-smoothing: antialiased;
+    /*Para mac*/
+    -moz-osx-font-smoothing: antialiased;
+    -webkit-scrollbar
+        {
+            display: none;
+        }
+    
+  
+ 
 }
+
+#header {
+    height: 150px;
+    width: 100%;
+    background-color: #f34141;
+    border-bottom: 5px solid #f3f713;
+    border-top: 5px solid #f3f713;
+}
+
+#logo {
+    text-align: left;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.center {
+    width: 100%;
+    margin: 0px auto;
+}
+
+#menu {
+    width: 100%;
+    float: right;
+    font-size: 33px;
+    margin-top: -130px;
+    margin-right: -20px;
+    
+}
+
+
+ #menu ul {
+    line-height: 85px;
+    width: 35%;
+    float: right;
+}
+
+ #menu ul li {
+ display: inline-block;  
+ list-style: none; 
+ height: 46px;
+ margin-left: 35px;
+ margin-right: 5px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: 300ms all;
+ }
+
+    #menu a:hover {
+        color: #f3f713;
+    }
+
+#grilla{
+
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
 
 #footer {
     text-align: center;

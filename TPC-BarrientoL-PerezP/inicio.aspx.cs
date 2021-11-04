@@ -11,12 +11,15 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class inicio : System.Web.UI.Page
     {
+
+        public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
             ArticuloDatos lista = new ArticuloDatos();
-            GVArticulos.DataSource = lista.Listar();
-            GVArticulos.DataBind();        
+            ListaArticulos = lista.Listar();
+           /* GVArticulos.DataSource = lista.Listar();
+            GVArticulos.DataBind();    */    
         }
     }
 }

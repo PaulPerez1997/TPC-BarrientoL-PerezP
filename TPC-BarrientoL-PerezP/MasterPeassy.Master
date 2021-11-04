@@ -12,13 +12,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <header>
-
-           <h1><%:Page.Title %></h1>
-
-        </header>
-        <nav >
-            <ul style="list-style: none; text-decoration: none">
+        <header id="header">
+            <div id="logo" >
+                 <img src="peassy.PNG" class="logoTitulo" alt="Logotipo" />
+               </div>
+          <div class="center">
+               
+            <nav id="menu" >
+            <ul >
                 <li>
                     <a href="inicio.aspx">inicio</a>
                 </li>
@@ -28,11 +29,12 @@
                  <li>
                     <a href="Contacto.aspx" >Contacto</a>
                 </li>
-                
-
-               
             </ul>
-        </nav>
+             </nav>
+
+         </div>
+      </header>
+       
 
 
 
