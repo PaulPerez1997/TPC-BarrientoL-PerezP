@@ -67,7 +67,49 @@ namespace datos
 
         }
 
-       
+        public List<Persona> Buscar2(string User, string Contraseña)
+        {
+            List<Persona> lista = new List<Persona>();
+            AccesoDatos datos = new AccesoDatos();
+            datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono,administrador from Usuario where @User = nombreusuario and @Contraseña = contraseña");
+            datos.setearParametro("@User", User);
+            datos.setearParametro("@Contraseña", Contraseña);
+            datos.EjecutarLectura();
+            Persona aux = new Persona();
+            while (datos.Lector.Read())
+            {
+                
+
+                if (!(datos.Lector["nombreusuario"] is DBNull))
+                    aux.nombreusuario = (string)datos.Lector["nombreusuario"];
+
+            }
+
+            lista.Add(aux);
+            return lista; 
+        }
+
+        public String Buscar(string Mail, string Contraseña)
+        {
+            string aux="";
+            AccesoDatos datos = new AccesoDatos();
+            datos.SetearConsulta("select nombreusuario from Usuario where mail = @Mail and contraseña = @Contraseña ");
+            datos.setearParametro("@Mail", Mail);
+            datos.setearParametro("@Contraseña", Contraseña);
+            datos.EjecutarLectura();
+            while(datos.Lector.Read())
+            {
+              
+                if (!(datos.Lector["nombreusuario"] is DBNull))
+                    aux = (string)datos.Lector["nombreusuario"];
+               
+            }
+            datos.cerrarConexion();
+            return aux;
+           
+        }
+
+
 
         public void Agregar(Persona nuevo)
         {
@@ -96,6 +138,8 @@ namespace datos
                 datos.cerrarConexion();
             }
         }
+
+     
 
         public void modificar(Articulo Art)
         {

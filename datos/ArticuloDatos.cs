@@ -90,9 +90,10 @@ namespace datos
           
             try
             {
-                //datos.SetearConsulta("select A.nombre, M.nombre, C.nombre, descripcion, imagenURL, precio, peso_kg, largo_cm, stock from Articulo A, Categorias C, Marcas M where A.nombre like '%' and A.idMarca = M.id and A.idCategoria = C.id");
-                datos.SetearConsulta("select A.nombre, M.nombre, C.nombre, descripcion, imagenURL, precio, peso_kg, largo_cm, stock from Articulo A, Categorias C, Marcas M where a.nombre = @Nombre and A.idMarca = M.id and A.idCategoria = C.id");
-                datos.setearParametro("@Nombre", Buscar);
+                string like = Buscar + "%";
+                datos.SetearConsulta("select A.nombre, M.nombre, C.nombre, descripcion, imagenURL, precio, peso_kg, largo_cm, stock from Articulo A, Categorias C, Marcas M where A.nombre like @Nombre and A.idMarca = M.id and A.idCategoria = C.id");
+              
+                datos.setearParametro("@Nombre", like);
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
