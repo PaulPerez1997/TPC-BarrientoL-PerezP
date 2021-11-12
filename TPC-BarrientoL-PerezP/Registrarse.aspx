@@ -50,10 +50,7 @@
      <asp:TextBox ID="TBAdmin" runat="server"  Cssclass="form-control" placeholder=""></asp:TextBox>
     </div>
     
-    <div class="mb-3">
-    <asp:Label ID="lblcheckclick" runat="server" Text="Si queres registrarte como administrador, Introduzca la password de admin" Cssclass="form-label" ></asp:Label>
-     <asp:TextBox ID="TBClick" runat="server"  Cssclass="form-control" placeholder=""></asp:TextBox>
-    </div>
+  
 
     <div class="mb-3">
         <asp:Button Text="Agregar" runat="server" OnClick="BtnAgregar_Click" ID="BtnAgregar" Cssclass="btn btn-outline-success"  />

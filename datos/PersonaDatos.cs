@@ -67,26 +67,46 @@ namespace datos
 
         }
 
-        public List<Persona> Buscar2(string User, string Contraseña)
+        public Persona Buscar2(string User, string Contraseña)
         {
-            List<Persona> lista = new List<Persona>();
+            
             AccesoDatos datos = new AccesoDatos();
+            Persona aux = new Persona();
             datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono,administrador from Usuario where @User = nombreusuario and @Contraseña = contraseña");
             datos.setearParametro("@User", User);
             datos.setearParametro("@Contraseña", Contraseña);
             datos.EjecutarLectura();
-            Persona aux = new Persona();
+            
             while (datos.Lector.Read())
             {
+                if (!(datos.Lector["dni"] is DBNull))
+                    aux.dni = (int)datos.Lector["dni"];
                 
+                if (!(datos.Lector["nombre"] is DBNull))
+                    aux.nombres = (string)datos.Lector["nombre"];
+                
+                if (!(datos.Lector["apellido"] is DBNull))
+                    aux.apellido = (string)datos.Lector["apellido"];
+               
+                if (!(datos.Lector["nacimiento"] is DBNull))
+                    aux.Nacimiento = (DateTime)datos.Lector["nacimiento"];
+               
+                if (!(datos.Lector["mail"] is DBNull))
+                    aux.mail = (string)datos.Lector["mail"];
 
                 if (!(datos.Lector["nombreusuario"] is DBNull))
                     aux.nombreusuario = (string)datos.Lector["nombreusuario"];
 
+                if (!(datos.Lector["telefono"] is DBNull))
+                    aux.telefono = (string)datos.Lector["telefono"];
+                
+                if (!(datos.Lector["administrador"] is DBNull))
+                    aux.admin = (bool)datos.Lector["administrador"];
+
             }
 
-            lista.Add(aux);
-            return lista; 
+           
+            return aux; 
         }
 
         public String Buscar(string Mail, string Contraseña)

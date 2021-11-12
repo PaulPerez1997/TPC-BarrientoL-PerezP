@@ -15,7 +15,7 @@ namespace TPC_BarrientoL_PerezP
         {
             if (!IsPostBack) {
                
-                TBClick.Text = "pageload";
+               
             }
 
         }
@@ -48,9 +48,6 @@ namespace TPC_BarrientoL_PerezP
 
         }
 
-        protected void BtnAgregarClick_Click(object sender, EventArgs e)
-        {
-            TBClick.Text = "eventoclick";
-        }
+        
     }
 }

@@ -15,7 +15,7 @@ namespace TPC_BarrientoL_PerezP
         protected void Page_Load(object sender, EventArgs e)
         {
             string NombreArticulo = Request.QueryString["nombre"].ToString();
-            lblbusqueda.Text = NombreArticulo;
+            
             ArticuloDatos lista = new ArticuloDatos();
             Busqueda = lista.Buscar(NombreArticulo);
             //Busqueda = lista.Listar();

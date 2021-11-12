@@ -8,7 +8,7 @@
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">--%>
 
       <asp:Label Text="Nombre de Usuario" ID="lblMail" runat="server" Cssclass="form-label"/>
-      <asp:TextBox runat="server" ID="TBUser" type="email" Cssclass="form-control"/>
+      <asp:TextBox runat="server" ID="TBUser"  Cssclass="form-control"/>
     
          </div>
         
@@ -28,6 +28,8 @@
      <div class="mb-3">
   
       <asp:Label Text="" ID="Welcome" runat="server" Cssclass="form-label"/>
+
+       
     
   </div>
 

@@ -22,11 +22,32 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
-            string name;
+           
+            Persona user = new Persona();
             PersonaDatos aux = new PersonaDatos();
-            name = aux.Buscar(TBUser.Text, TBContraseña.Text);
+            string nombreusuario;
+            //name = aux.Buscar(TBUser.Text, TBContraseña.Text);
+            
+            user = aux.Buscar2(TBUser.Text, TBContraseña.Text);
 
-            Welcome.Text = "Bienvenido " + name + " Te Deseamos buenas Compras!!!";
-        }
+            nombreusuario = user.nombreusuario;
+            
+            if (user.admin == true){
+                Session.Add("user", user.nombreusuario);
+                Response.Redirect("Administrador.aspx", false);
+            }
+            else
+            {
+                Session.Add("user", user.nombreusuario);
+                Response.Redirect("Default.aspx", false);
+                
+            }
+
+
+
+            
+
+
+}
     }
 }

@@ -177,24 +177,6 @@ namespace TPC_BarrientoL_PerezP
         protected global::System.Web.UI.WebControls.TextBox TBAdmin;
 
         /// <summary>
-        /// Control lblcheckclick.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblcheckclick;
-
-        /// <summary>
-        /// Control TBClick.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBClick;
-
-        /// <summary>
         /// Control BtnAgregar.
         /// </summary>
         /// <remarks>
