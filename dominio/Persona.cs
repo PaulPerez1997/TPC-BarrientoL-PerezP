@@ -12,12 +12,14 @@ namespace dominio
         public int dni { get; set; }
         public string nombres { get; set; }
         public string apellido { get; set; }
-       // public DateTime Nacimiento { get; set; }
-        //String.Format("{0:dd/MM/yyyy}", Nacimiento);
+        public DateTime Nacimiento { get; set; }
+        
         public string mail { get; set; }
-        public char nombreusuario { get; set; }
-        public char contraseña { get; set; }
-        public char telefono { get; set; }
+        public string nombreusuario { get; set; }
+        public string contraseña { get; set; }
+        public string telefono { get; set; }
+
+        public Boolean admin { get; set; }
         
     }
 }

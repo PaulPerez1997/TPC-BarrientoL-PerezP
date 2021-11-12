@@ -22,6 +22,7 @@ mail varchar(50)  null,
 nombreusuario varchar(50) null,
 contraseña varchar(50)  null,
 telefono varchar(50) null,
+administrador bit null,
 )
 go
 create table Articulo(

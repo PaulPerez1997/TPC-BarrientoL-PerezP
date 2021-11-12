@@ -42,14 +42,15 @@
                             </li>
                             
                         </ul>
-                        <form class="d-flex" >
+                       
                             <asp:TextBox ID="TBBuscar" runat="server" Cssclass="form-control me-2" type="search" placeholder="Buscar"  ></asp:TextBox>                     
                             <asp:Button Text="Buscar" runat="server" ID="BtnBuscar" OnClick="BtnBuscar_Click" Cssclass="btn btn-outline-success" type="submit" />
-                            </form>
+                          
                        
                     </div>
                 </div>
             </nav>
+
 
             <%-- <div id="logo" >
                  <img src="peassy.PNG" class="logoTitulo" alt="Logotipo" />

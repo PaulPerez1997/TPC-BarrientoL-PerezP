@@ -69,18 +69,21 @@ namespace datos
 
        
 
-        public void Agregar(Articulo nuevo)
+        public void Agregar(Persona nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion,ImagenUrl,Precio,IdMarca,IdCategoria) values (@Codigo,@Nombre,@Descripcion,@ImagenURL,@Precio,@IdMarca,@IdCategoria)");
-                datos.setearParametro("@Nombre", nuevo.Nombre);
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
-                datos.setearParametro("@Precio", nuevo.Precio);
-                datos.setearParametro("@IdMarca", nuevo.Marca.ID);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.ID);
+                datos.SetearConsulta("insert into Usuario (dni,nombre,apellido,nacimiento,mail,nombreusuario,contraseña,telefono,administrador) values (@Dni,@Nombre,@Apellido,@Nacimiento,@Email,@NombreUsuario,@Contraseña,@Telefono,@Admin)");
+                datos.setearParametro("@Dni", nuevo.dni);
+                datos.setearParametro("@Nombre", nuevo.nombres);
+                datos.setearParametro("@Apellido", nuevo.apellido);
+                datos.setearParametro("@Nacimiento", nuevo.Nacimiento);
+                datos.setearParametro("@Email", nuevo.mail);
+                datos.setearParametro("@NombreUsuario", nuevo.nombreusuario);
+                datos.setearParametro("@Contraseña", nuevo.contraseña);
+                datos.setearParametro("@Telefono", nuevo.telefono);
+                datos.setearParametro("@Admin", nuevo.admin);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
