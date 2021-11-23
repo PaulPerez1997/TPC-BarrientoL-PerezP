@@ -22,7 +22,10 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            
+            Page.Validate();
+            if (!Page.IsValid) ;
+            return;
+
             Persona nuevo = new Persona();
             PersonaDatos datos = new PersonaDatos();
 
