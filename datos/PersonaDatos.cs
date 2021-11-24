@@ -9,40 +9,40 @@ namespace datos
 {
     public class PersonaDatos
     {
-        public List<Articulo> Listar()
+        public List<Persona> Listar()
         {
-            List<Articulo> lista = new List<Articulo>();
+            List<Persona> lista = new List<Persona>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("select a.id,Codigo,Nombre,M.id,M.Descripcion Marca,a.Descripcion,ImagenUrl,C.Id,C.Descripcion,A.Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where C.id = A.IdCategoria and M.Id = A.IdMarca");
+                datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono from Usuario");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
+                    Persona aux = new Persona();
                     
-                    aux.ID = (int)datos.Lector["id"];
+                    aux.dni = (int)datos.Lector["dni"];
 
-                    if (!(datos.Lector["Nombre"] is DBNull))
-                        aux.Nombre = (string)datos.Lector["Nombre"];
+                    if (!(datos.Lector["nombre"] is DBNull))
+                        aux.nombres = (string)datos.Lector["nombre"];
 
-                    if (!(datos.Lector["Descripcion"] is DBNull))
-                        aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    if (!(datos.Lector["apellido"] is DBNull))
+                        aux.apellido = (string)datos.Lector["apellido"];
 
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.ImagenURL = (string)datos.Lector["ImagenUrl"];
+                    if (!(datos.Lector["nacimiento"] is DBNull))
+                        aux.nacimiento = (DateTime)datos.Lector["nacimiento"];
 
-                    if (!(datos.Lector["Precio"] is DBNull))
-                        aux.Precio = (decimal)datos.Lector["Precio"];
+                    if (!(datos.Lector["mail"] is DBNull))
+                        aux.mail = (string)datos.Lector["mail"];
 
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.ID = datos.Lector.GetInt32(7);
-                    aux.Categoria.Descripcion = datos.Lector.GetString(8);
-                    
-                    aux.Marca = new Marca();
-                    aux.Marca.ID = datos.Lector.GetInt32(3);
-                    aux.Marca.Descripcion = datos.Lector.GetString(4);
+                    if (!(datos.Lector["nombreusuario"] is DBNull))
+                        aux.nombreusuario = (string)datos.Lector["nombreusuario"];
+
+                    if (!(datos.Lector["telefono"] is DBNull))
+                        aux.telefono = (string)datos.Lector["telefono"];
+
+
 
                     lista.Add(aux);
                 }
@@ -72,7 +72,7 @@ namespace datos
             
             AccesoDatos datos = new AccesoDatos();
             Persona aux = new Persona();
-            datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono,administrador from Usuario where @User = nombreusuario and @Contraseña = contraseña");
+            datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono from Usuario where @User = nombreusuario and @Contraseña = contraseña");
             datos.setearParametro("@User", User);
             datos.setearParametro("@Contraseña", Contraseña);
             datos.EjecutarLectura();
@@ -89,7 +89,7 @@ namespace datos
                     aux.apellido = (string)datos.Lector["apellido"];
                
                 if (!(datos.Lector["nacimiento"] is DBNull))
-                    aux.Nacimiento = (DateTime)datos.Lector["nacimiento"];
+                    aux.nacimiento = (DateTime)datos.Lector["nacimiento"];
                
                 if (!(datos.Lector["mail"] is DBNull))
                     aux.mail = (string)datos.Lector["mail"];
@@ -99,10 +99,7 @@ namespace datos
 
                 if (!(datos.Lector["telefono"] is DBNull))
                     aux.telefono = (string)datos.Lector["telefono"];
-                
-                if (!(datos.Lector["administrador"] is DBNull))
-                    aux.admin = (bool)datos.Lector["administrador"];
-
+               
             }
 
            
@@ -140,12 +137,11 @@ namespace datos
                 datos.setearParametro("@Dni", nuevo.dni);
                 datos.setearParametro("@Nombre", nuevo.nombres);
                 datos.setearParametro("@Apellido", nuevo.apellido);
-                datos.setearParametro("@Nacimiento", nuevo.Nacimiento);
+                datos.setearParametro("@Nacimiento", nuevo.nacimiento);
                 datos.setearParametro("@Email", nuevo.mail);
                 datos.setearParametro("@NombreUsuario", nuevo.nombreusuario);
                 datos.setearParametro("@Contraseña", nuevo.contraseña);
                 datos.setearParametro("@Telefono", nuevo.telefono);
-                datos.setearParametro("@Admin", nuevo.admin);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -159,23 +155,24 @@ namespace datos
             }
         }
 
-     
-
-        public void modificar(Articulo Art)
+        public bool Loguear(Persona persona)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");     
-                datos.setearParametro("@Nombre",Art.Nombre);
-                datos.setearParametro("@Desc",Art.Descripcion);
-                datos.setearParametro("@idMarca",Art.Marca.ID);
-                datos.setearParametro("@idCategoria",Art.Categoria.ID);
-                datos.setearParametro("@img",Art.ImagenURL);
-                datos.setearParametro("@Precio",Art.Precio);
-                datos.setearParametro("@id",Art.ID);
-                datos.EjecutarAccion();
+                datos.SetearConsulta("select dni,nombreusuario,contraseña,tipousuario from Usuario where nombreusuario=@user and contraseña=@pass");
+                datos.setearParametro("@user", persona.nombreusuario);
+                datos.setearParametro("@pass", persona.contraseña);
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    persona.dni = (int)datos.Lector["dni"];
+                    persona.TipoUsuario = (int)(datos.Lector["tipousuario"])==1?TipoUser.admin :TipoUser.normal;
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {
@@ -184,9 +181,9 @@ namespace datos
             }
             finally
             {
-
                 datos.cerrarConexion();
             }
         }
+
     }
 }

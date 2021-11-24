@@ -33,18 +33,18 @@ namespace TPC_BarrientoL_PerezP
             nuevo.dni = int.Parse(TBDni.Text);
             nuevo.nombres = TBNombre.Text;
             nuevo.apellido = TBApellido.Text;
-            nuevo.Nacimiento = DateTime.Parse(TBNacimiento.Text);
+            nuevo.nacimiento = DateTime.Parse(TBNacimiento.Text);
             nuevo.mail = TBMail.Text;
             nuevo.nombreusuario = TBNombreUsuario.Text;
             nuevo.contraseña = TBContraseña.Text;
             nuevo.telefono = TBTelefono.Text;
             if (TBAdmin.Text == "admin")
             {
-                nuevo.admin = true;
+                nuevo.TipoUsuario = TipoUser.admin;
             }
             else
             {
-                nuevo.admin = false;
+                nuevo.TipoUsuario = TipoUser.normal;
             }
 
             datos.Agregar(nuevo);
