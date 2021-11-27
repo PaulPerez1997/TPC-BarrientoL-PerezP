@@ -9,122 +9,70 @@ namespace datos
 {
     public class PersonaDatos
     {
-        public List<Persona> Listar()
-        {
-            List<Persona> lista = new List<Persona>();
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono from Usuario");
-                datos.EjecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Persona aux = new Persona();
-                    
-                    aux.dni = (int)datos.Lector["dni"];
-
-                    if (!(datos.Lector["nombre"] is DBNull))
-                        aux.nombres = (string)datos.Lector["nombre"];
-
-                    if (!(datos.Lector["apellido"] is DBNull))
-                        aux.apellido = (string)datos.Lector["apellido"];
-
-                    if (!(datos.Lector["nacimiento"] is DBNull))
-                        aux.nacimiento = (DateTime)datos.Lector["nacimiento"];
-
-                    if (!(datos.Lector["mail"] is DBNull))
-                        aux.mail = (string)datos.Lector["mail"];
-
-                    if (!(datos.Lector["nombreusuario"] is DBNull))
-                        aux.nombreusuario = (string)datos.Lector["nombreusuario"];
-
-                    if (!(datos.Lector["telefono"] is DBNull))
-                        aux.telefono = (string)datos.Lector["telefono"];
-
-
-
-                    lista.Add(aux);
-                }
-
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
+        
            
 
 
 
-        }
+        
 
-        public Persona Buscar2(string User, string Contraseña)
+        public bool Login(Persona User)
         {
             
             AccesoDatos datos = new AccesoDatos();
-            Persona aux = new Persona();
-            datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono from Usuario where @User = nombreusuario and @Contraseña = contraseña");
-            datos.setearParametro("@User", User);
-            datos.setearParametro("@Contraseña", Contraseña);
+            try
+            {
+            
+          
+            datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono,administrador from Usuario where @User = nombreusuario and @Contraseña = contraseña");
+            datos.setearParametro("@User", User.nombreusuario);
+            datos.setearParametro("@Contraseña", User.contraseña);
             datos.EjecutarLectura();
             
             while (datos.Lector.Read())
             {
                 if (!(datos.Lector["dni"] is DBNull))
-                    aux.dni = (int)datos.Lector["dni"];
+                        User.dni = (int)datos.Lector["dni"];
                 
                 if (!(datos.Lector["nombre"] is DBNull))
-                    aux.nombres = (string)datos.Lector["nombre"];
+                        User.nombres = (string)datos.Lector["nombre"];
                 
                 if (!(datos.Lector["apellido"] is DBNull))
-                    aux.apellido = (string)datos.Lector["apellido"];
+                        User.apellido = (string)datos.Lector["apellido"];
                
                 if (!(datos.Lector["nacimiento"] is DBNull))
-                    aux.nacimiento = (DateTime)datos.Lector["nacimiento"];
+                        User.Nacimiento = (DateTime)datos.Lector["nacimiento"];
                
                 if (!(datos.Lector["mail"] is DBNull))
-                    aux.mail = (string)datos.Lector["mail"];
+                        User.mail = (string)datos.Lector["mail"];
 
                 if (!(datos.Lector["nombreusuario"] is DBNull))
-                    aux.nombreusuario = (string)datos.Lector["nombreusuario"];
+                        User.nombreusuario = (string)datos.Lector["nombreusuario"];
 
                 if (!(datos.Lector["telefono"] is DBNull))
-                    aux.telefono = (string)datos.Lector["telefono"];
-               
+                        User.telefono = (string)datos.Lector["telefono"];
+                
+                if (!(datos.Lector["administrador"] is DBNull))
+                        User.admin = (bool)datos.Lector["administrador"];
+                   
+                    return true;
+
+                }
+
+            return false;
             }
-
-           
-            return aux; 
-        }
-
-        public String Buscar(string Mail, string Contraseña)
-        {
-            string aux="";
-            AccesoDatos datos = new AccesoDatos();
-            datos.SetearConsulta("select nombreusuario from Usuario where mail = @Mail and contraseña = @Contraseña ");
-            datos.setearParametro("@Mail", Mail);
-            datos.setearParametro("@Contraseña", Contraseña);
-            datos.EjecutarLectura();
-            while(datos.Lector.Read())
+            catch (Exception ex)
             {
-              
-                if (!(datos.Lector["nombreusuario"] is DBNull))
-                    aux = (string)datos.Lector["nombreusuario"];
                
+                throw ex;
             }
-            datos.cerrarConexion();
-            return aux;
-           
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
+
+       
 
 
 
@@ -137,11 +85,12 @@ namespace datos
                 datos.setearParametro("@Dni", nuevo.dni);
                 datos.setearParametro("@Nombre", nuevo.nombres);
                 datos.setearParametro("@Apellido", nuevo.apellido);
-                datos.setearParametro("@Nacimiento", nuevo.nacimiento);
+                datos.setearParametro("@Nacimiento", nuevo.Nacimiento);
                 datos.setearParametro("@Email", nuevo.mail);
                 datos.setearParametro("@NombreUsuario", nuevo.nombreusuario);
                 datos.setearParametro("@Contraseña", nuevo.contraseña);
                 datos.setearParametro("@Telefono", nuevo.telefono);
+                datos.setearParametro("@Admin", nuevo.admin);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -155,24 +104,23 @@ namespace datos
             }
         }
 
-        public bool Loguear(Persona persona)
+     
+
+        public void modificar(Articulo Art)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta("select dni,nombreusuario,contraseña,tipousuario from Usuario where nombreusuario=@user and contraseña=@pass");
-                datos.setearParametro("@user", persona.nombreusuario);
-                datos.setearParametro("@pass", persona.contraseña);
-                datos.EjecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    persona.dni = (int)datos.Lector["dni"];
-                    persona.TipoUsuario = (int)(datos.Lector["tipousuario"])==1?TipoUser.admin :TipoUser.normal;
-                    return true;
-                }
-                return false;
+                datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");     
+                datos.setearParametro("@Nombre",Art.Nombre);
+                datos.setearParametro("@Desc",Art.Descripcion);
+                datos.setearParametro("@idMarca",Art.Marca.ID);
+                datos.setearParametro("@idCategoria",Art.Categoria.ID);
+                datos.setearParametro("@img",Art.ImagenURL);
+                datos.setearParametro("@Precio",Art.Precio);
+                datos.setearParametro("@id",Art.ID);
+                datos.EjecutarAccion();
             }
             catch (Exception ex)
             {
@@ -181,9 +129,9 @@ namespace datos
             }
             finally
             {
+
                 datos.cerrarConexion();
             }
         }
-
     }
 }

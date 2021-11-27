@@ -11,44 +11,66 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class Registrarse : System.Web.UI.Page
     {
+        public bool adm { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+         
+
             if (!IsPostBack) {
-               
+
                
             }
+
+            if ((Persona)Session["Usuario"] == null)
+            {
+
+                adm = false;
+            }
+            else
+            {
+
+                adm = true;
+            }
+
+
 
         }
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            Page.Validate();
-            if (!Page.IsValid) ;
-            return;
+
+            //Page.Validate();
+            //if (!Page.IsValid);
+            //return;
 
             Persona nuevo = new Persona();
+            
             PersonaDatos datos = new PersonaDatos();
 
 
             nuevo.dni = int.Parse(TBDni.Text);
             nuevo.nombres = TBNombre.Text;
             nuevo.apellido = TBApellido.Text;
-            nuevo.nacimiento = DateTime.Parse(TBNacimiento.Text);
+            nuevo.Nacimiento = DateTime.Parse(TBNacimiento.Text);
             nuevo.mail = TBMail.Text;
             nuevo.nombreusuario = TBNombreUsuario.Text;
             nuevo.contraseña = TBContraseña.Text;
             nuevo.telefono = TBTelefono.Text;
-            if (TBAdmin.Text == "admin")
+
+            
+          
+            if(adm == true)
             {
-                nuevo.TipoUsuario = TipoUser.admin;
+             nuevo.admin = true;
             }
             else
             {
-                nuevo.TipoUsuario = TipoUser.normal;
+                nuevo.admin = false;
             }
 
             datos.Agregar(nuevo);
-
+            Response.Redirect("exito.aspx?exito="+ nuevo.nombreusuario, false);
+            
         }
 
         

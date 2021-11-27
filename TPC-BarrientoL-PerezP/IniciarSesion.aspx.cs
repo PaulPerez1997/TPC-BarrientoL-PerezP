@@ -22,36 +22,59 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
-
-            Persona user;
+           
+            Persona user = new Persona();
             PersonaDatos aux = new PersonaDatos();
+          
+
             try
             {
-                user = new Persona(TBUser.Text, TBContraseña.Text, false);
-                if (aux.Loguear(user))
+                user.nombreusuario = TBUser.Text;
+                user.contraseña = TBContraseña.Text;
+
+
+
+                if (aux.Login(user))
                 {
-                    Session.Add("persona", user);
-                    Response.Redirect("Administrador.aspx",false);
+                    //if (user.admin == true)
+                    //{
+                    //    Session.Add("user", user);
+                    //    Response.Redirect("Administrador.aspx", false);
+                    //}
+                    //else
+                    //{
+                    //    Session.Add("user", user);
+                    //    Response.Redirect("Default.aspx", false);
+
+                    //}
+
+                    Session.Add("Usuario", user);
+                    Response.Redirect("Administrador.aspx", false);
+
                 }
                 else
                 {
-                    Session.Add("Error","Usuario y/o Contraseña incorrecto/s");
-                    Response.Redirect("Error.aspx",false);
+
+
+                    Session.Add("error","Usuario o Contraseña Incorrecta! ");
+                    Response.Redirect("error.aspx", false);
                 }
+
             }
-            catch (Exception ex)
+            catch (Exception ex )
             {
 
-                throw ex;
+
+                Session.Add("error", ex.ToString());
+                Response.Redirect("error.aspx", false);
             }
-            
-            
 
 
 
-            
 
 
-}
+
+
+        }
     }
 }

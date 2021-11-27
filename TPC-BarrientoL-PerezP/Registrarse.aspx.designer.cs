@@ -159,24 +159,6 @@ namespace TPC_BarrientoL_PerezP
         protected global::System.Web.UI.WebControls.TextBox TBTelefono;
 
         /// <summary>
-        /// Control lblAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdmin;
-
-        /// <summary>
-        /// Control TBAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBAdmin;
-
-        /// <summary>
         /// Control BtnAgregar.
         /// </summary>
         /// <remarks>

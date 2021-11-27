@@ -15,14 +15,14 @@ nombre varchar(50)  null,
 go
 create table Usuario(
 dni int not null primary key,
-nombre varchar(50) not null,
-apellido varchar(50) not null,
-nacimiento date not null,
-mail varchar(50) not null,
-nombreusuario varchar(50) not null,
-contraseña varchar(50) not null,
-telefono varchar(50) not null,
-tipousuario int not null
+nombre varchar(50)  null,
+apellido varchar(50)  null,
+nacimiento date  null,
+mail varchar(50)  null,
+nombreusuario varchar(50) null,
+contraseña varchar(50)  null,
+telefono varchar(50) null,
+administrador bit null,
 )
 go
 create table Articulo(
@@ -50,6 +50,4 @@ id int not null foreign key references Carrito(id),
 idarticulo int not null references Articulo(id),
 cantidad int  null,
 )
-
-
 

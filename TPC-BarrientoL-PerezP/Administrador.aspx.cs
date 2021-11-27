@@ -11,11 +11,22 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class Administrador : System.Web.UI.Page
     {
-        public string user { get; set; }
+        public Persona user { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            user = Session["user"].ToString();
-            Lbladmin.Text = "Bienvenido admin " + user;
+            if (Session["Usuario"] == null)
+            {
+                Session.Add("error","Por Favor Iniciar Sesion como Administrador");
+                Response.Redirect("error.aspx",false);
+            }
+            else
+            {
+                user = (Persona)Session["usuario"];
+                lblAdmin.Text = "Bienvenido admin " + user.nombreusuario;
+            }
+
+            
+           
         }
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
@@ -26,6 +37,35 @@ namespace TPC_BarrientoL_PerezP
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Modificar.aspx", false);
+        }
+
+        protected void BtnAgregarMarca_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnModificarMarca_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnModificarCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnAgregarAdmin_Click(object sender, EventArgs e)
+        {
+
+            Session.Add("Usuario", user);
+            Response.Redirect("Registrarse.aspx", false);
+
+
         }
     }
 }
