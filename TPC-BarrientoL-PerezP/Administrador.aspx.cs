@@ -31,12 +31,12 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Agregar.aspx",false);
+            Response.Redirect("AgregarArticulo.aspx",false);
         }
 
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Modificar.aspx", false);
+            Response.Redirect("ModificarArticulo.aspx", false);
         }
 
         protected void BtnAgregarMarca_Click(object sender, EventArgs e)

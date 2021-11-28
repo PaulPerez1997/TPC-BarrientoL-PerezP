@@ -17,6 +17,8 @@ namespace dominio
         public string ImagenURL { get; set; }
         public Int64 Stock { get; set; }
 
+        public bool Estado { get; set; }
+
 
         public Categoria Categoria { get; set; }
 

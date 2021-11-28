@@ -155,19 +155,23 @@ namespace datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion,ImagenUrl,Precio,IdMarca,IdCategoria) values (@Codigo,@Nombre,@Descripcion,@ImagenURL,@Precio,@IdMarca,@IdCategoria)");
+                datos.SetearConsulta("insert into Articulo(nombre,idMarca,idCategoria,descripcion,precio,peso_kg,largo_cm,imagenURL,stock,Estado)values(@Nombre,@idMarca,@idCategoria,@Descripcion,@Precio,@Peso,@Largo,@ImagenURL,@Stock,@Estado)");
                 datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@idMarca",nuevo.Marca.ID);
+                datos.setearParametro("@idCategoria",nuevo.Categoria.ID);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
                 datos.setearParametro("@Precio", nuevo.Precio);
-                datos.setearParametro("@IdMarca", nuevo.Marca.ID);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.ID);
+                datos.setearParametro("@Peso", nuevo.Peso_kg);
+                datos.setearParametro("@Largo",nuevo.Largo_cm);
+                datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
+                datos.setearParametro("@Stock",nuevo.Stock);
+                datos.setearParametro("@Estado",nuevo.Estado);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
             {
-
                 throw ex;
+                
             }
             finally
             {

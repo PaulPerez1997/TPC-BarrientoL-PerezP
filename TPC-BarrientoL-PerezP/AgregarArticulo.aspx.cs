@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using datos;
 
 namespace TPC_BarrientoL_PerezP
 {
@@ -11,7 +13,71 @@ namespace TPC_BarrientoL_PerezP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                MarcaDatos marca = new MarcaDatos();         
+                CategoriaDatos categoria = new CategoriaDatos();
 
+                ddlMarca.DataSource = marca.listar();
+                ddlMarca.DataTextField = "Descripcion";
+                ddlMarca.DataValueField = "ID";
+                ddlMarca.DataBind();
+
+                ddlCategoria.DataSource = categoria.listar();
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataValueField = "ID";
+                ddlCategoria.DataBind();
+
+            }
+            catch (Exception)
+            {
+                Session.Add("error.aspx","Error en Agregado de Articulo");
+                throw;
+            }
+
+        }
+
+        protected void BtnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+           
+            Articulo art = new Articulo();
+            art.Nombre = TBNombre.Text;
+            art.Descripcion = TBDescripcion.Text;
+            art.ImagenURL = TBImagenURL.Text;
+            art.Peso_kg = decimal.Parse(TBPeso_KG.Text);
+            art.Largo_cm = decimal.Parse(TBLargo_cm.Text);
+            art.Precio = decimal.Parse(TBPrecio.Text);
+            art.Stock = int.Parse(TBStock.Text);
+            art.Estado = true;
+
+            art.Marca = new Marca();
+            art.Marca.ID = int.Parse(ddlMarca.SelectedItem.Value);
+            art.Marca.Descripcion = ddlMarca.SelectedItem.Text;
+
+            art.Categoria = new Categoria();
+            art.Categoria.ID = int.Parse(ddlCategoria.SelectedItem.Value);
+            art.Categoria.Descripcion = ddlCategoria.SelectedItem.Text;
+
+            try
+            {
+                ArticuloDatos datos = new ArticuloDatos();
+                datos.Agregar(art);
+                string msg = "Articulo Agregado Correctamente";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),"alert","alert('" + msg + "');",true);
+                Response.Redirect("Administrador.aspx",false);
+
+            }
+            catch (Exception)
+            {
+
+                Session.Add("error","Error al ingresar Articulo");
+                Response.Redirect("error.aspx",false);
+            }
+           
+
+
+
+           
         }
     }
 }
