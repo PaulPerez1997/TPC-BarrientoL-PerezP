@@ -11,6 +11,7 @@
              <div class="container" style="margin:10px;">
                <div class="row" style="margin:10px;">
                    <div class="col-2"></div>
+
                  <div class="col"  >
                      <asp:Label Text="Articulo: " runat="server" />
                     <asp:Button Text="Agregar" runat="server" Cssclass="btn btn-outline-success" ID="BtnAgregar" OnClick="BtnAgregar_Click" />
