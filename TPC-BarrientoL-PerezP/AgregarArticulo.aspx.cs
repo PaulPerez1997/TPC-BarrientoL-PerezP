@@ -41,6 +41,8 @@ namespace TPC_BarrientoL_PerezP
         {
            
             Articulo art = new Articulo();
+            ArticuloDatos datos = new ArticuloDatos();
+            
             art.Nombre = TBNombre.Text;
             art.Descripcion = TBDescripcion.Text;
             art.ImagenURL = TBImagenURL.Text;
@@ -58,21 +60,23 @@ namespace TPC_BarrientoL_PerezP
             art.Categoria.ID = int.Parse(ddlCategoria.SelectedItem.Value);
             art.Categoria.Descripcion = ddlCategoria.SelectedItem.Text;
 
-            try
-            {
-                ArticuloDatos datos = new ArticuloDatos();
-                datos.Agregar(art);
-                string msg = "Articulo Agregado Correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),"alert","alert('" + msg + "');",true);
-                Response.Redirect("Administrador.aspx",false);
 
-            }
-            catch (Exception)
+            if (datos.Agregar(art) == true)
             {
-
-                Session.Add("error","Error al ingresar Articulo");
-                Response.Redirect("error.aspx",false);
+                
+                Response.Redirect("Administrador.aspx", false);
             }
+            else
+            {
+                Session.Add("error", "Error al ingresar Articulo");
+                Response.Redirect("error.aspx", false);
+            }
+
+          
+            
+
+              
+            
            
 
 

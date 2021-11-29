@@ -37,6 +37,29 @@ namespace datos
             finally{
                 datos.cerrarConexion();
             }
+        }
+
+        public bool Agregar(string nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+
+            try
+            {
+                datos.SetearConsulta("insert into Categorias (nombre) values (@nombre)");
+                datos.setearParametro("@nombre", nuevo);
+                datos.EjecutarAccion();
+                return true;
             }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

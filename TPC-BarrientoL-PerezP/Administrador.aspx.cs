@@ -41,7 +41,7 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnAgregarMarca_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AgregarMarca.aspx", false);
         }
 
         protected void BtnModificarMarca_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnAgregarCategoria_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AgregarCategoria.aspx", false);
         }
 
         protected void BtnModificarCategoria_Click(object sender, EventArgs e)

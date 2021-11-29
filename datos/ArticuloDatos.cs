@@ -150,7 +150,7 @@ namespace datos
 
 
 
-        public void Agregar(Articulo nuevo)
+        public bool Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -167,9 +167,11 @@ namespace datos
                 datos.setearParametro("@Stock",nuevo.Stock);
                 datos.setearParametro("@Estado",nuevo.Estado);
                 datos.EjecutarAccion();
+                return true;
             }
             catch (Exception ex)
             {
+                return false;
                 throw ex;
                 
             }
