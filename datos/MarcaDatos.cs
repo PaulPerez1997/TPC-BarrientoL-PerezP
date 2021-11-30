@@ -64,5 +64,28 @@ namespace datos
                 datos.cerrarConexion();
             }
         }
+
+        public bool Modificar(Marca nuevo)
+        {
+
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+
+                datos.SetearConsulta("update Marcas set nombre = @nombre where id = @id");
+                datos.setearParametro("@nombre",nuevo.Descripcion);
+                datos.setearParametro("@id", nuevo.ID);
+                datos.EjecutarAccion();
+
+
+                return true;
+            }
+            catch (Exception ex )
+            {
+                return false;
+                throw ex ;
+            }
+        }
+
     }
 }
