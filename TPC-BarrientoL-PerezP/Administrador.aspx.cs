@@ -67,5 +67,10 @@ namespace TPC_BarrientoL_PerezP
 
 
         }
+
+        protected void BtnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

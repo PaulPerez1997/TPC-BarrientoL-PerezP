@@ -12,9 +12,16 @@ namespace TPC_BarrientoL_PerezP
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            string nombre = Request.QueryString["exito"].ToString();
-            lblexito.Text = "Usuario "+nombre+" Cargado Correctamente! ";
+            string nombre = Session["exito"].ToString();
+            lblexito.Text = nombre;
 
+
+
+        }
+
+        protected void BtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Administrador.aspx",false);
         }
     }
 }

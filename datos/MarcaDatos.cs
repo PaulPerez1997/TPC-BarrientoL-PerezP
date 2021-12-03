@@ -68,6 +68,11 @@ namespace datos
         public bool Modificar(Marca nuevo)
         {
 
+            if (nuevo.Descripcion == "")
+            {
+                return false;
+            }
+
             try
             {
                 AccesoDatos datos = new AccesoDatos();

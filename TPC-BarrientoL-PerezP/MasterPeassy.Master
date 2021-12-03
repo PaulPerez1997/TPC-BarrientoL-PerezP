@@ -52,26 +52,7 @@
             </nav>
 
 
-            <%-- <div id="logo" >
-                 <img src="peassy.PNG" class="logoTitulo" alt="Logotipo" />
-               </div>
-          <div class="center">
-               
-            <nav id="menu" >
-            <ul >
-                <li>
-                    <a href="inicio.aspx">inicio</a>
-                </li>
-                 <li>
-                    <a href="Cuenta.aspx">Cuenta</a>
-                </li>
-                 <li>
-                    <a href="Contacto.aspx" >Contacto</a>
-                </li>
-            </ul>
-             </nav>
-
-         </div>--%>
+        
         </header>
 
 

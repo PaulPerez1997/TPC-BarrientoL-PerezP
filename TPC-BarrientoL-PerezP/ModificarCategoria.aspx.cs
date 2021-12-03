@@ -41,7 +41,7 @@ namespace TPC_BarrientoL_PerezP
             }
             else
             {
-                Session.Add("error", "Error al Modificar Marca");
+                Session.Add("error", "Error al Modificar Categoria");
                 Response.Redirect("error.aspx", false);
             }
         }

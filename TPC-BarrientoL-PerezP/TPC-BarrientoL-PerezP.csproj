@@ -89,6 +89,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="EliminarArticulo.aspx" />
     <Content Include="error.aspx" />
     <Content Include="exito.aspx" />
     <Content Include="IniciarSesion.aspx" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarArticulo.aspx.cs">
+      <DependentUpon>EliminarArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarArticulo.aspx.designer.cs">
+      <DependentUpon>EliminarArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>

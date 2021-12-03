@@ -8,7 +8,7 @@
     { %>
 
      <div  style="width: 18rem; border: solid 1px grey; padding: 10px; margin: 15px">
-        <img src="<%: Art.ImagenURL%>" class="card-img-top" alt="..." width="100%">
+        <img src="<%: Art.ImagenURL%>" class="card-img-top" alt="..." width:"100%">
     <div class="card-body">
     <h5 class="card-title"><%: Art.Nombre %></h5>
     <h5 class="card-title"><%: Art.Marca.Descripcion %></h5>  

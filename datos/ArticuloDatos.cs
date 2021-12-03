@@ -91,7 +91,7 @@ namespace datos
             try
             {
                 string like = Buscar + "%";
-                datos.SetearConsulta("select A.nombre, M.nombre, C.nombre, descripcion, imagenURL, precio, peso_kg, largo_cm, stock from Articulo A, Categorias C, Marcas M where A.nombre like @Nombre and A.idMarca = M.id and A.idCategoria = C.id");
+                datos.SetearConsulta("select A.nombre, M.nombre, C.nombre, descripcion, imagenURL, precio, peso_kg, largo_cm, stock, A.id from Articulo A, Categorias C, Marcas M where A.nombre like @Nombre and A.idMarca = M.id and A.idCategoria = C.id");
               
                 datos.setearParametro("@Nombre", like);
                 datos.EjecutarLectura();
@@ -99,6 +99,9 @@ namespace datos
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+
+                    if (!(datos.Lector["id"] is DBNull))
+                        aux.ID = (int)datos.Lector["id"];
 
                     if (!(datos.Lector["nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["nombre"];
@@ -181,25 +184,29 @@ namespace datos
             }
         }
 
-        public void modificar(Articulo Art)
+        public bool modificar(Articulo Art)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.SetearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Desc, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @img, Precio = @Precio where id = @id");              
+                datos.SetearConsulta("update Articulo set nombre=@Nombre, idMarca = @idMarca,idCategoria = @idCategoria,descripcion = @Desc,precio = @Precio,peso_kg = @Peso,largo_cm = @Largo,imagenURL = @img,stock = @Stock where id = @id");              
                 datos.setearParametro("@Nombre", Art.Nombre);
                 datos.setearParametro("@Desc", Art.Descripcion);
                 datos.setearParametro("@idMarca", Art.Marca.ID);
                 datos.setearParametro("@idCategoria", Art.Categoria.ID);
                 datos.setearParametro("@img", Art.ImagenURL);
                 datos.setearParametro("@Precio", Art.Precio);
+                datos.setearParametro("@Largo", Art.Largo_cm);
+                datos.setearParametro("@Peso", Art.Peso_kg);
+                datos.setearParametro("@Stock", Art.Stock);
                 datos.setearParametro("@id", Art.ID);
                 datos.EjecutarAccion();
+                return true;
             }
             catch (Exception ex)
             {
-
+                return false;
                 throw ex;
             }
             finally
