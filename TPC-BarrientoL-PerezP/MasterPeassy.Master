@@ -17,7 +17,7 @@
 <body>
     <form id="form1" runat="server">
         <header id="header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #f55151; ">
                 <div class="container-fluid">
                     <%--<a class="navbar-brand" href="#">Navbar</a>--%>
                     <img src="peassy.PNG" class="logoTitulo" alt="Logotipo" />
@@ -25,8 +25,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>--%>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" ">
+                            <li class="nav-item" >
                                 <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -40,11 +40,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Contacto.aspx">Contacto</a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="Cliente.aspx">Perfil</a>
+                            </li>
                             
                         </ul>
                        
                             <asp:TextBox ID="TBBuscar" runat="server" Cssclass="form-control me-2" type="search" placeholder="Buscar"  ></asp:TextBox>                     
-                            <asp:Button Text="Buscar" runat="server" ID="BtnBuscar" OnClick="BtnBuscar_Click" Cssclass="btn btn-outline-success" type="submit" />
+                            <asp:Button Text="Buscar" runat="server" ID="BtnBuscar" OnClick="BtnBuscar_Click" Cssclass="btn btn-light btn-outline-danger" type="submit" />
                           
                        
                     </div>

@@ -16,6 +16,23 @@ namespace TPC_BarrientoL_PerezP
         public List<Articulo> Busqueda { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Session.Add("error", "Por Favor Iniciar Sesion como Administrador");
+                Response.Redirect("error.aspx", false);
+            }
+            else
+            {
+                Persona user = new Persona();
+                user = (Persona)Session["Usuario"];
+                if (user.admin == false)
+                {
+                    Session.Add("error", "No posee permiso para Ingresar");
+                    Response.Redirect("error.aspx", false);
+                }
+
+            }
+
             Articulo aux = new Articulo();
             ArticuloDatos datos = new ArticuloDatos();
             List<Articulo> lista = new List<Articulo>();

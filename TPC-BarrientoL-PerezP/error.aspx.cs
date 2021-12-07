@@ -11,11 +11,23 @@ namespace TPC_BarrientoL_PerezP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             
+            BtnIniciar.Visible = false;
 
-            if(Session["error"] != null)
+            if (Session["error"] != null)
+            {
+                lblerror.Text = Session["error"].ToString();
+            }
                
-            lblerror.Text = Session["error"].ToString();
+            if ( Session["errorCarrito"] != null){
+                lblerror.Text = Session["errorCarrito"].ToString();
+                BtnIniciar.Visible = true;
+              
+            }
+        }
+
+        protected void BtnIniciar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IniciarSesion.aspx",false);
         }
     }
 }

@@ -69,7 +69,9 @@ namespace TPC_BarrientoL_PerezP
             }
 
             datos.Agregar(nuevo);
-            Response.Redirect("exito.aspx?exito="+ nuevo.nombreusuario, false);
+            Session.Add("exito","Cliente Registrado con Exito! ");
+
+            Response.Redirect("exito.aspx?nuevocliente=1", false);
             
         }
 

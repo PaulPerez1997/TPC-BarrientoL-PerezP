@@ -215,5 +215,24 @@ namespace datos
                 datos.cerrarConexion();
             }
         }
+
+        public bool Eliminar (int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("update Articulo set Estado = 0 where id = @id");
+                datos.setearParametro("@id",id);
+                datos.EjecutarAccion();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+          
+        }
+
     }
 }

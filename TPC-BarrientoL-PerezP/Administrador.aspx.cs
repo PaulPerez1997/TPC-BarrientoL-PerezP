@@ -16,12 +16,19 @@ namespace TPC_BarrientoL_PerezP
         {
             if (Session["Usuario"] == null)
             {
-                Session.Add("error","Por Favor Iniciar Sesion como Administrador");
-                Response.Redirect("error.aspx",false);
+   
+                    Session.Add("error", "Por Favor Inicie Sesion");
+                    Response.Redirect("error.aspx", false);                   
             }
             else
             {
+
                 user = (Persona)Session["usuario"];
+                if ( user.admin == false)
+                {
+                    Session.Add("error", "Por Favor Iniciar Sesion como Administrador");
+                    Response.Redirect("error.aspx", false);
+                }
                 lblAdmin.Text = "Bienvenido admin " + user.nombreusuario;
             }
 
@@ -70,7 +77,12 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnEliminar_Click(object sender, EventArgs e)
         {
+            Response.Redirect("EliminarArticulo.aspx", false);
+        }
 
+        protected void ComprasUsuarios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ComprasUsuario.aspx", false);
         }
     }
 }

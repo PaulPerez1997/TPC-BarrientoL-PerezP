@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using datos;
+using dominio;
 
 namespace TPC_BarrientoL_PerezP
 {
@@ -12,7 +13,22 @@ namespace TPC_BarrientoL_PerezP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Session.Add("error", "Por Favor Iniciar Sesion como Administrador");
+                Response.Redirect("error.aspx", false);
+            }
+            else
+            {
+                Persona user = new Persona();
+                user = (Persona)Session["Usuario"];
+                if (user.admin == false)
+                {
+                    Session.Add("error", "No posee permiso para Ingresar");
+                    Response.Redirect("error.aspx", false);
+                }
 
+            }
         }
 
         protected void BtnAgregarCategoria_Click(object sender, EventArgs e)

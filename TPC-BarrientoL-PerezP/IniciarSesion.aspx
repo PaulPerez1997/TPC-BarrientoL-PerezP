@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="margin-top 10px;"> 
+    <div class="row" style="margin-top:10px;"> 
     <div class="col-4"></div>
      <div class="col-3" >
         <asp:Label Text="Nombre de Usuario" ID="lblMail" runat="server" Cssclass="form-label"/>

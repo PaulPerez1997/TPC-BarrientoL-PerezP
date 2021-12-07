@@ -36,20 +36,19 @@ namespace TPC_BarrientoL_PerezP
 
                 if (aux.Login(user))
                 {
-                    //if (user.admin == true)
-                    //{
-                    //    Session.Add("user", user);
-                    //    Response.Redirect("Administrador.aspx", false);
-                    //}
-                    //else
-                    //{
-                    //    Session.Add("user", user);
-                    //    Response.Redirect("Default.aspx", false);
+                    if (user.admin == true)
+                    {
+                        Session.Add("Usuario", user);
+                        Response.Redirect("Administrador.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("Usuario", user);
+                        Response.Redirect("Cliente.aspx?nombre="+user.nombreusuario, false);
 
-                    //}
+                    }
 
-                    Session.Add("Usuario", user);
-                    Response.Redirect("Administrador.aspx", false);
+                    
 
                 }
                 else

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPeassy.Master" AutoEventWireup="true" CodeBehind="ModificarMarca.aspx.cs" Inherits="TPC_BarrientoL_PerezP.ModificarMarca" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPeassyAdmin.Master" AutoEventWireup="true" CodeBehind="ModificarMarca.aspx.cs" Inherits="TPC_BarrientoL_PerezP.ModificarMarca" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,6 +10,7 @@
          <div class="col-2" >
             <asp:DropDownList id="ddlMarca" runat="server" CssClass="btn btn-outline-dark dropdown-toggle">
             </asp:DropDownList>
+        </div>
         </div>
         <div class="col-3" >
             

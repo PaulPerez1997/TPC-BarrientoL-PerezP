@@ -50,4 +50,15 @@ id int not null foreign key references Carrito(id),
 idarticulo int not null references Articulo(id),
 cantidad int  null,
 )
+create table Compra(
+id int not null primary key identity(1,1),
+Dniusuario int not null references Usuario(dni), 
+IdArticulo int not null references Articulo(id)
+)
 
+create table CompraRealizada(
+id int not null primary key identity(1,1),
+Dniusuario int not null references Usuario(dni), 
+IdArticulo int not null references Articulo(id),
+Fecha datetime not null 
+)

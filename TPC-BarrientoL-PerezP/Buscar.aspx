@@ -17,6 +17,7 @@
     <p class="card-text"><%: Art.Descripcion %></p>
     <p class="card-text">Peso: <%: Art.Peso_kg %></p>
     <p class="card-text">Largo: <%: Art.Largo_cm%></p>
+    <a href="Default.aspx?id=<%:Art.ID %>" class="btn btn-light btn-outline-danger">Agregar a Favoritos</a>
 
      </div>
     </div>

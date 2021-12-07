@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="ArticuloDatos.cs" />
+    <Compile Include="CarritoDatos.cs" />
     <Compile Include="CategoriaDatos.cs" />
+    <Compile Include="CompraRealizadaDatos.cs" />
     <Compile Include="MarcaDatos.cs" />
     <Compile Include="PersonaDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
