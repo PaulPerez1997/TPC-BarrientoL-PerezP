@@ -72,7 +72,64 @@ namespace datos
             }
         }
 
-       
+        public Persona UsuarioXdni (int dni)
+        {
+            Persona User = new Persona();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+
+                datos.SetearConsulta("select dni,nombre,apellido,nacimiento,mail,nombreusuario,telefono,administrador from Usuario where @dni = dni");
+                datos.setearParametro("@dni", dni);
+                datos.EjecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                   
+                    if (!(datos.Lector["dni"] is DBNull))
+                        User.dni = (int)datos.Lector["dni"];
+
+                    if (!(datos.Lector["nombre"] is DBNull))
+                        User.nombres = (string)datos.Lector["nombre"];
+
+                    if (!(datos.Lector["apellido"] is DBNull))
+                        User.apellido = (string)datos.Lector["apellido"];
+
+                    if (!(datos.Lector["nacimiento"] is DBNull))
+                        User.Nacimiento = (DateTime)datos.Lector["nacimiento"];
+
+                    if (!(datos.Lector["mail"] is DBNull))
+                        User.mail = (string)datos.Lector["mail"];
+
+                    if (!(datos.Lector["nombreusuario"] is DBNull))
+                        User.nombreusuario = (string)datos.Lector["nombreusuario"];
+
+                    if (!(datos.Lector["telefono"] is DBNull))
+                        User.telefono = (string)datos.Lector["telefono"];
+
+                    if (!(datos.Lector["administrador"] is DBNull))
+                        User.admin = (bool)datos.Lector["administrador"];
+
+                   
+
+                }
+                return User;
+
+
+            }
+            catch (Exception )
+            {
+                return User;
+                
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
 
 

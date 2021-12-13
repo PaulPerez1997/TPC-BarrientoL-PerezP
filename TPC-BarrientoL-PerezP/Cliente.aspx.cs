@@ -53,5 +53,15 @@ namespace TPC_BarrientoL_PerezP
             Session.Add("Usuario", user);
             Response.Redirect("Carrito.aspx", false);
         }
+
+        protected void BtnMisVentas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnVender_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

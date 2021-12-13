@@ -68,6 +68,63 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
+
+<%--          <div style="margin: 1px;">
+    <div class="container" style="padding: 5%;">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding: 5%;" >
+  <div class="carousel-inner" >
+    <div class="carousel-item active">
+      <img src="https://d2qc4bb64nav1a.cloudfront.net/cdn/13/images/curso-profesional-acabado-carpinteria-mueble_amp_primaria_1_1560503046.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://intervila.es/wp-content/uploads/2019/10/materiales-construccion.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://d2jhl5pzkfi24b.cloudfront.net/article_image/0001/04/de9ccfa022c45ca2451976bc3ec43a75dcd75c51.jpeg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+   </div>
+   </div>
+    </div>
+
+      <div style="margin:1px;">
+    <div class="container" style="padding: 5%;">
+       <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding: 5%;">
+        <div class="carousel-inner" >
+          <div class="carousel-item active">
+          <img src="data:image/png;base64,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" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+          <img src="https://yt3.ggpht.com/ytc/AKedOLRsr-dJ5gmsJFgkFXgidFodLWyk5i_suihgHujP2w=s900-c-k-c0x00ffffff-no-rj" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQReZaUm-UqQ1PQ6IEa6sX-na6KcXAWBjcotg&usqp=CAU" class="d-block w-100" alt="...">
+          </div>
+        </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade1" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade1" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+      </div>
+    </div>
+    </div>--%>
+
+
+
+
         <footer id="footer">
             <p>&copy <%: DateTime.Now.Year%> - Peassy </p>
 

@@ -10,6 +10,8 @@ namespace dominio
     {
         
         public int dni { get; set; }
+
+      
         public string nombres { get; set; }
         public string apellido { get; set; }
         public DateTime Nacimiento { get; set; }

@@ -27,7 +27,6 @@ namespace TPC_BarrientoL_PerezP
                     Session.Add("error", "No posee permiso para Ingresar");
                     Response.Redirect("error.aspx", false);
                 }
-
             }
 
             try

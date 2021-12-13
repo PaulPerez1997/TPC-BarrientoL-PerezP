@@ -100,6 +100,7 @@
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Cliente.aspx" />
+    <Content Include="MisVentas.aspx" />
     <Content Include="ModificarArticulo.aspx" />
     <Content Include="ModificarCategoria.aspx" />
     <Content Include="ModificarMarca.aspx" />
@@ -112,6 +113,7 @@
     <Content Include="Script\bootstrap.js" />
     <Content Include="Script\bootstrap.min.js" />
     <Content Include="Style.css" />
+    <Content Include="Vender.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +250,13 @@
     <Compile Include="Cliente.aspx.designer.cs">
       <DependentUpon>Cliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MisVentas.aspx.cs">
+      <DependentUpon>MisVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisVentas.aspx.designer.cs">
+      <DependentUpon>MisVentas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModificarArticulo.aspx.cs">
       <DependentUpon>ModificarArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +292,13 @@
     </Compile>
     <Compile Include="Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vender.aspx.cs">
+      <DependentUpon>Vender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vender.aspx.designer.cs">
+      <DependentUpon>Vender.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

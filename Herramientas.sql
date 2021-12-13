@@ -27,6 +27,7 @@ administrador bit null,
 go
 create table Articulo(
 id int not null primary key identity(1,1),
+dniUsuario int not null foreign key references Usuario(dni),
 nombre varchar(50) null,
 idMarca	int foreign key references Marcas(id) not null,
 idCategoria int foreign key references Categorias(id) not null,
@@ -45,10 +46,10 @@ idusuario int not null references Usuario(dni),
 precioTotal money not null,
 )
 go
-create table ArticuloCarrito(
-id int not null foreign key references Carrito(id),
-idarticulo int not null references Articulo(id),
-cantidad int  null,
+create table EnVenta(
+id int not null primary key identity(1,1),
+Dniusuario int not null references Usuario(dni), 
+IdArticulo int not null references Articulo(id)
 )
 create table Compra(
 id int not null primary key identity(1,1),

@@ -24,6 +24,7 @@
     <p class="card-text">Peso en Kilogramo: <%: ArticuloEnVenta.Peso_kg %></p>
     <p class="card-text">Largo en CM: <%: ArticuloEnVenta.Largo_cm%></p>
     <p class="card-text">Stock: <%: ArticuloEnVenta.Stock %></p>
+    <p class="card-text">Vendedor: <%: user.nombreusuario %></p>
     <asp:Button Text="Comprar" ID="BtnComprar" OnClick="BtnComprar_Click" runat="server" Cssclass="btn btn-light btn-outline-danger" />
     <%--<a href="Favoritos.aspx?id=<%: ArticuloEnVenta.ID %>" class="btn btn-light btn-outline-danger">Agregar Al Carrito</a>--%>
     </div>

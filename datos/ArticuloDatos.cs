@@ -18,7 +18,7 @@ namespace datos
 
             try
             {
-                datos.SetearConsulta("select A.id,a.nombre,M.id, M.nombre, C.id, C.nombre, A.descripcion, A.precio, A.peso_kg, A.largo_cm, A.imagenURL, A.stock, A.Estado from Articulo A, Marcas M, Categorias C where A.idMarca = M.id and A.idCategoria = C.id");
+                datos.SetearConsulta("select A.id,a.nombre,M.id, M.nombre, C.id, C.nombre, A.descripcion, A.precio, A.peso_kg, A.largo_cm, A.imagenURL, A.stock, A.Estado,a.dniUsuario from Articulo A, Marcas M, Categorias C where A.idMarca = M.id and A.idCategoria = C.id");
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
@@ -27,8 +27,14 @@ namespace datos
                   
                 if (!(datos.Lector["id"] is DBNull))
                  aux.ID = (int)datos.Lector["id"];
-                  
-                if (!(datos.Lector["nombre"] is DBNull))
+
+                    if (!(datos.Lector["dniUsuario"] is DBNull))
+                        aux.dni = (int)datos.Lector["dniUsuario"];
+
+                    if (!(datos.Lector["Estado"] is DBNull))
+                        aux.Estado = (bool)datos.Lector["Estado"];
+
+                    if (!(datos.Lector["nombre"] is DBNull))
                     aux.Nombre = (string)datos.Lector["nombre"];
 
                 if (!(datos.Lector["descripcion"] is DBNull))
@@ -58,7 +64,11 @@ namespace datos
                 aux.Categoria.ID = datos.Lector.GetInt32(4);
                 aux.Categoria.Descripcion = datos.Lector.GetString(5);
 
-                lista.Add(aux);
+                    if (aux.Estado == true)
+                    {
+                        lista.Add(aux);
+                    }
+                
             }
             
 

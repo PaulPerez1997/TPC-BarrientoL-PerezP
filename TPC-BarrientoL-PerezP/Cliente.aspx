@@ -22,7 +22,7 @@
 
         <div class="container" >
         <div class="row" style="margin: 30px;" >
-        <div class="col-1"></div>
+        
         <div class="col-1">
         <asp:Button Text="Ir al Carrito" ID="BtnCarrito" OnClick="BtnCarrito_Click" runat="server" CssClass="btn btn btn-light btn-outline-danger" />
         </div>
@@ -45,8 +45,18 @@
         <div class="col-1"></div>
         <div class="col-1">
         <asp:Button Text="Mi Perfil" id="BtnPerfil" Onclick="BtnPerfil_Click" runat="server" CssClass="btn btn btn-light btn-outline-danger"/>
-        
         </div>
+
+         <div class="col-1"></div>
+        <div class="col-1">
+        <asp:Button Text="Mis Ventas" ID="BtnMisVentas" OnClick="BtnMisVentas_Click" runat="server" CssClass="btn btn btn-light btn-outline-danger" /> 
+        </div>
+
+        <div class="col-1"></div>
+        <div class="col-1">
+        <asp:Button Text="Vender" ID="BtnVender" OnClick="BtnVender_Click" runat="server" CssClass="btn btn btn-light btn-outline-danger" /> 
+        </div>
+        
         </div>
         </div>
       

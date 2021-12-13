@@ -12,14 +12,20 @@ namespace TPC_BarrientoL_PerezP
     public partial class Comprar : System.Web.UI.Page
     {
         public Articulo ArticuloEnVenta { get; set; } 
+
+        public Persona user { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             Articulo art = new Articulo();
+            PersonaDatos DatosPersona = new PersonaDatos();
 
             if(Session["Articulo"] != null)
             {
                 art = (Articulo)Session["Articulo"];
                 ArticuloEnVenta = art;
+
+                user = DatosPersona.UsuarioXdni(art.dni);
+
             }
         }
 
