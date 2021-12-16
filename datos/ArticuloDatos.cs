@@ -168,8 +168,9 @@ namespace datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("insert into Articulo(nombre,idMarca,idCategoria,descripcion,precio,peso_kg,largo_cm,imagenURL,stock,Estado)values(@Nombre,@idMarca,@idCategoria,@Descripcion,@Precio,@Peso,@Largo,@ImagenURL,@Stock,@Estado)");
+                datos.SetearConsulta("insert into Articulo(nombre,dniUsuario,idMarca,idCategoria,descripcion,precio,peso_kg,largo_cm,imagenURL,stock,Estado)values(@Nombre,@dni,@idMarca,@idCategoria,@Descripcion,@Precio,@Peso,@Largo,@ImagenURL,@Stock,@Estado)");
                 datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@dni", nuevo.dni);
                 datos.setearParametro("@idMarca",nuevo.Marca.ID);
                 datos.setearParametro("@idCategoria",nuevo.Categoria.ID);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
@@ -243,6 +244,32 @@ namespace datos
             }
           
         }
+
+        public int UltimoIDArtxdni(int dni)
+        {
+            int nuevoidart = new int();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("select top 1 id from Articulo where dniUsuario = @dni order by id desc ");
+                datos.setearParametro("@dni",dni);
+                datos.EjecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["id"] is DBNull))
+                        nuevoidart = (int)datos.Lector["id"];
+
+                }
+                return nuevoidart;
+            }
+            catch (Exception)
+            {
+                return -1;
+                throw;
+            }
+
+        }
+
 
     }
 }

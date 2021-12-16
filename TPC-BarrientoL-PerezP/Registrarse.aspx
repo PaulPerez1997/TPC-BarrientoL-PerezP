@@ -164,7 +164,7 @@
      <div class="row" style="margin:10px;">
        <div class="col-3"></div> 
     <div class="col-4">
-        <asp:Button Text="Agregar" runat="server" OnClick="BtnAgregar_Click" ID="BtnAgregar" Cssclass="btn btn-outline-success"  />
+        <asp:Button Text="Agregar" runat="server" OnClick="BtnAgregar_Click" ID="BtnAgregar" Cssclass="btn btn-light btn-outline-danger"  />
     </div>
          </div>
 

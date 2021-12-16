@@ -11,21 +11,28 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class Agregar : System.Web.UI.Page
     {
+
+        public int dni { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["Usuario"] == null)
             {
-                Session.Add("error", "Por Favor Iniciar Sesion como Administrador");
+                Session.Add("error", "Por Favor Iniciar Sesion");
                 Response.Redirect("error.aspx", false);
             }
             else
             {
                 Persona user = new Persona();
                 user = (Persona)Session["Usuario"];
-                if (user.admin == false)
+                if (user.admin == true)
                 {
-                    Session.Add("error", "No posee permiso para Ingresar");
-                    Response.Redirect("error.aspx", false);
+                    dni = 1;
+                }
+                else
+                {
+                    dni = user.dni;
                 }
             }
 
@@ -58,8 +65,11 @@ namespace TPC_BarrientoL_PerezP
            
             Articulo art = new Articulo();
             ArticuloDatos datos = new ArticuloDatos();
+            EnVenta nuevoEnVenta = new EnVenta();
+            EnVentaDatos datosEnVenta = new EnVentaDatos();
             
             art.Nombre = TBNombre.Text;
+            art.dni = dni;
             art.Descripcion = TBDescripcion.Text;
             art.ImagenURL = TBImagenURL.Text;
             art.Peso_kg = decimal.Parse(TBPeso_KG.Text);
@@ -79,22 +89,34 @@ namespace TPC_BarrientoL_PerezP
 
             if (datos.Agregar(art) == true)
             {
+                if(datos.UltimoIDArtxdni(art.dni) != -1)
+                {
+                    nuevoEnVenta.dniUsuario = art.dni;
+                    nuevoEnVenta.idArticulo = datos.UltimoIDArtxdni(art.dni);
+                    if (datosEnVenta.Agregar(nuevoEnVenta) == true)
+                    {
+                        Session.Add("exito","Articulo Agregado Correctamente");
+                        Response.Redirect("exito.aspx", false);
+                    }
+                    else
+                    {
+                        Session.Add("error.aspx", "Error al agregar Articulo");
+                        Response.Redirect("exito.aspx", false);
+                    }
+                }
+                else
+                {
+                    Session.Add("error.aspx", "Error al agregar Articulo");
+                    Response.Redirect("exito.aspx", false);
+
+                }                
                 
-                Response.Redirect("Administrador.aspx", false);
             }
             else
             {
                 Session.Add("error", "Error al ingresar Articulo");
                 Response.Redirect("error.aspx", false);
             }
-
-          
-            
-
-              
-            
-           
-
 
 
            

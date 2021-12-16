@@ -77,5 +77,30 @@ namespace datos
             }
         }
 
+        public int UltimoIDCompraRealizadaxdni(int dni)
+        {
+            int nuevoidcompra = new int();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("select top 1 id from CompraRealizada where dniUsuario = @dni order by id desc ");
+                datos.setearParametro("@dni", dni);
+                datos.EjecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["id"] is DBNull))
+                        nuevoidcompra = (int)datos.Lector["id"];
+
+                }
+                return nuevoidcompra;
+            }
+            catch (Exception)
+            {
+                return -1;
+                throw;
+            }
+
+        }
+
     }
 }

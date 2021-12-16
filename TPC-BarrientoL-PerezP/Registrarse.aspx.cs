@@ -28,8 +28,13 @@ namespace TPC_BarrientoL_PerezP
             }
             else
             {
-
-                adm = true;
+                Persona aux = new Persona();
+                aux = (Persona)Session["Usuario"];
+                if( aux.admin == true)
+                {
+                    adm = true;
+                }
+                adm = false;
             }
 
 

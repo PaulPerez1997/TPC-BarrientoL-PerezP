@@ -18,8 +18,10 @@
             <div class="col-4"></div>
             <div class="col-4">
             <asp:Label Text="Marca: " runat="server" CssClass="form-label"/>
-                <asp:DropDownList id="ddlMarca" runat="server" CssClass="btn btn-outline-dark dropdown-toggle">
+                <asp:DropDownList id="ddlMarca" runat="server" CssClass="btn btn-light btn-outline-danger dropdown-toggle">
                 </asp:DropDownList>
+
+               
             
                 </div>
         </div>
@@ -29,7 +31,7 @@
             <div class="col-4"></div>
             <div class="col-4">
             <asp:Label Text="Categoria: " runat="server" CssClass="form-label"/>
-                <asp:DropDownList id="ddlCategoria" runat="server" CssClass="btn btn-outline-dark dropdown-toggle">
+                <asp:DropDownList id="ddlCategoria" runat="server" CssClass="btn btn-light btn-outline-danger  dropdown-toggle">
                    
                 </asp:DropDownList>
                 </div>
@@ -91,7 +93,7 @@
          <div class="row" style="margin:10px;">
             <div class="col-4"></div>
             <div class="col-4">
-                <asp:Button Text="Agregar Articulo" runat="server" id="BtnAgregarArticulo" OnClick="BtnAgregarArticulo_Click" Cssclass="btn btn-outline-success" />
+                <asp:Button Text="Agregar Articulo" runat="server" id="BtnAgregarArticulo" OnClick="BtnAgregarArticulo_Click" Cssclass="btn btn btn-light btn-outline-danger" />
                 </div>
         </div>
 

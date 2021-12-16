@@ -45,7 +45,7 @@ namespace TPC_BarrientoL_PerezP
         protected void BtnMisCompras_Click(object sender, EventArgs e)
         {
             Session.Add("Usuario", user);
-            Response.Redirect("ComprasRealizadas.aspx", false);
+            Response.Redirect("TicketCompra.aspx?nombre=compra", false);
         }
 
         protected void BtnCarrito_Click(object sender, EventArgs e)
@@ -56,12 +56,20 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnMisVentas_Click(object sender, EventArgs e)
         {
-
+            Session.Add("Usuario", user);
+            Response.Redirect("TicketCompra.aspx?nombre=venta", false);
         }
 
         protected void BtnVender_Click(object sender, EventArgs e)
         {
+            Session.Add("Usuario", user);
+            Response.Redirect("AgregarArticulo.aspx", false);
+        }
 
+        protected void BtnMisArticulos_Click(object sender, EventArgs e)
+        {
+            Session.Add("Usuario", user);
+            Response.Redirect("MisArticulos.aspx", false);
         }
     }
 }

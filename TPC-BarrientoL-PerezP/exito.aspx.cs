@@ -11,7 +11,7 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class exito : System.Web.UI.Page
     {
-        Persona usuario;
+       // Persona usuario;
         
         protected void Page_Load(object sender, EventArgs e)
         {

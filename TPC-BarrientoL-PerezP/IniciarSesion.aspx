@@ -6,7 +6,7 @@
     <div class="col-4"></div>
      <div class="col-3" >
         <asp:Label Text="Nombre de Usuario" ID="lblMail" runat="server" Cssclass="form-label"/>
-        <asp:TextBox runat="server" ID="TBUser"  Cssclass="form-control"/>
+        <asp:TextBox runat="server" ID="TBUser"  Cssclass="form-control btn-outline-danger"/>
      </div>
      </div> 
         
@@ -14,8 +14,8 @@
     <div class="col-4"></div>
      <div class="col-3" >
          <asp:Label Text="Contraseña" ID="lblContraseña" runat="server" Cssclass="form-label"/>
-         <asp:TextBox runat="server" ID="TBContraseña" type="password" Cssclass="form-control"/>
-         <asp:Button style ="margin-top: 10px" Text="Ingresar" ID="BtnIngresar" runat="server" Cssclass="btn btn-primary" OnClick="BtnIngresar_Click"/>
+         <asp:TextBox runat="server" ID="TBContraseña" type="password" Cssclass="form-control btn-outline-danger"/>
+         <asp:Button style ="margin-top: 10px" Text="Ingresar" ID="BtnIngresar" runat="server" Cssclass="btn btn btn-light btn-outline-danger" OnClick="BtnIngresar_Click"/>
      </div>
      </div>
 

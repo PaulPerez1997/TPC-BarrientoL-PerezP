@@ -15,7 +15,7 @@
         <div class="row" style="margin:20px">
         <div class="col-5"></div>
         <div class="col-1">
-            <asp:Button id="BtnVolver" OnClick="BtnVolver_Click" Text="Volver" runat="server" Cssclass="btn btn-outline-success" />
+            <asp:Button id="BtnVolver" OnClick="BtnVolver_Click" Text="Volver" runat="server" Cssclass="btn btn-light btn-outline-danger" />
         </div> 
         </div>
      

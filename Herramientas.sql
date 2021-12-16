@@ -40,16 +40,12 @@ stock bigint not null,
 Estado bit null,
 )
 go
-create table Carrito(
-id int not null primary key identity(1,1),
-idusuario int not null references Usuario(dni), 
-precioTotal money not null,
-)
-go
+
 create table EnVenta(
 id int not null primary key identity(1,1),
 Dniusuario int not null references Usuario(dni), 
-IdArticulo int not null references Articulo(id)
+IdArticulo int not null references Articulo(id),
+Estado bit not null
 )
 create table Compra(
 id int not null primary key identity(1,1),
@@ -62,4 +58,25 @@ id int not null primary key identity(1,1),
 Dniusuario int not null references Usuario(dni), 
 IdArticulo int not null references Articulo(id),
 Fecha datetime not null 
+)
+
+go
+create table DetalleCompra(
+id int not null primary key identity(1,1),
+IDCompraRealizada int not null foreign key references CompraRealizada(id),
+IDArticulo int not null,
+NombreArticulo varchar(50) null,
+PrecioTotal money not null,
+imagenURL varchar(200) not null,
+DNIComprador int not null, 
+NombreUsuarioComprador varchar(50) null,
+NombreComprador varchar(50) null,
+ApellidoComprador varchar(50) null,
+DireccionAEnviar varchar(50) null,
+TelefonoComprador varchar(50) null,
+DNIVendedor int not null, 
+NombreUsuarioVendedor varchar(50) null,
+NombreVendedor varchar(50) null,
+ApellidoVendedor varchar(50) null,
+TelefonoVendedor varchar(50) null
 )

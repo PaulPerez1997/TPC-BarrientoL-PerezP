@@ -46,6 +46,8 @@
     <Compile Include="CarritoDatos.cs" />
     <Compile Include="CategoriaDatos.cs" />
     <Compile Include="CompraRealizadaDatos.cs" />
+    <Compile Include="DetalleCompraDatos.cs" />
+    <Compile Include="EnVentaDatos.cs" />
     <Compile Include="MarcaDatos.cs" />
     <Compile Include="PersonaDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
