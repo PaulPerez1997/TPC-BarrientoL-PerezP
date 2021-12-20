@@ -11,8 +11,8 @@ namespace TPC_BarrientoL_PerezP
 {
     public partial class exito : System.Web.UI.Page
     {
-       // Persona usuario;
-        
+        Persona usuario;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,16 +25,21 @@ namespace TPC_BarrientoL_PerezP
 
         protected void BtnVolver_Click(object sender, EventArgs e)
         {
-            //if (Session["Usuario"] != null) {
-            //    usuario = (Persona)Session["Usuario"];
-            //    if(usuario.admin == true)
-            //    {
-            //        Response.Redirect("Administrador.aspx", false);
-            //    }
-                
-            //}
-            
-                Response.Redirect("Default.aspx", false);
+            if (Session["Usuario"] != null)
+            {
+                usuario = (Persona)Session["Usuario"];
+                if (usuario.admin == true)
+                {
+                    Response.Redirect("Administrador.aspx", false);
+                }
+                else {
+                    Response.Redirect("Cliente.aspx", false);
+                }
+
+
+            }
+
+           
             
 
         }

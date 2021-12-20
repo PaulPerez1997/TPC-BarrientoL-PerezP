@@ -38,15 +38,16 @@ namespace datos
 
             try
             {
-                datos.SetearConsulta("select IdArticulo from EnVenta where Dniusuario = @dni");
+                //datos.SetearConsulta("select IdArticulo from EnVenta where Dniusuario = @dni");
+                datos.SetearConsulta("select id from Articulo where dniUsuario = @dni and Estado = 1");
                 datos.setearParametro("@dni", dni);
                 datos.EjecutarLectura();
                 while (datos.Lector.Read())
                 {
                     int aux = new int();
 
-                    if (!(datos.Lector["IdArticulo"] is DBNull))
-                        aux = (int)datos.Lector["IdArticulo"];
+                    if (!(datos.Lector["id"] is DBNull))
+                        aux = (int)datos.Lector["id"];
 
 
                     Lista.Add(aux);

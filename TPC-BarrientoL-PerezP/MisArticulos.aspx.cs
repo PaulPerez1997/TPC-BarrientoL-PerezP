@@ -15,18 +15,17 @@ namespace TPC_BarrientoL_PerezP
     {
        
         public List<Articulo> MisArt { get; set; }
-
-    
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if (Session["Usuario"] == null)
             {
                 Session.Add("error","No se Inicio Sesion");
                 Response.Redirect("error.aspx",false);
             }
 
+          
        
 
             Persona user = (Persona)Session["Usuario"];
@@ -41,8 +40,6 @@ namespace TPC_BarrientoL_PerezP
             ListaIdArticulo = datosEnVenta.ListaIDArtEnVenta(user.dni);
             ListaArticulos = datos.Listar();
 
-            
-
             foreach (var id in ListaIdArticulo)
             {
               aux.Add(ListaArticulos.Find(x => x.ID == id));           
@@ -52,6 +49,21 @@ namespace TPC_BarrientoL_PerezP
             {
                 MisArt = aux;
             }
+
+            if (Request.QueryString["id"] != null)
+            {
+
+                int quitar = int.Parse(Request.QueryString["id"]);
+                if (datos.Eliminar(quitar) == true)
+                {
+                    Session.Add("exito", "Producto Eliminado Correctamente");
+                    Response.Redirect("exito.aspx", false);
+                }
+
+            }
+
+
+
         }
     }
 }
